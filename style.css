@@ -392,3 +392,84 @@ body {
     border: 1px solid #334155;
     background-color: #000;
 }
+
+/* =========================================
+   响应式适配：专门针对手机和平板（屏幕宽度 <= 768px）
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* 1. 顶部导航栏：改为上下纵向排列，避免挤在一起 */
+    .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 10px;
+        gap: 10px;
+    }
+
+    .nav-left {
+        margin-left: 0;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .brand-logo img {
+        height: 60px; /* 手机上把 Logo 稍微缩小一点 */
+    }
+
+    .right-art-titles {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .art-line-2 {
+        margin-left: 0; /* 手机上取消第二行的强制右移，防止超出屏幕 */
+    }
+
+    /* 2. 顶部辅助栏（日期和搜索）隐藏或简化 */
+    .top-bar {
+        display: none; /* 手机屏幕太小，直接隐藏顶部日期栏释放空间 */
+    }
+
+    /* 3. 大图 Banner 区域：高度降低，文字改小 */
+    .hero-banner {
+        height: 350px;
+    }
+
+    .banner-text h1 {
+        font-size: 24px;
+    }
+
+    .banner-text p {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    /* 4. 标语横幅区 */
+    .slogan-box {
+        padding: 20px 15px;
+    }
+
+    .slogan-box h2 {
+        font-size: 18px;
+    }
+
+    /* 5. 实验室简介、研究方向、成果作品的所有网格：全部变成单列（1列）上下排列 */
+    .intro-grid-2,
+    .photos-grid,
+    .research-grid,
+    .videos-grid {
+        grid-template-columns: 1fr !important; /* 强制单列 */
+        gap: 20px;
+    }
+
+    .content-section {
+        padding: 50px 5%; /* 手机上两边留出适量的边缘空白 */
+    }
+
+    /* 6. 联系方式卡片 */
+    .contact-card-container {
+        grid-template-columns: 1fr !important;
+    }
+}
