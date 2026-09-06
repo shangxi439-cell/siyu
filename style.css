@@ -57,7 +57,7 @@ body {
     cursor: pointer;
 }
 
-/* 2. 主导航区域 */
+/* 2. 主导航区域 (电脑端默认布局) */
 .main-header {
     background-color: #111827; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
@@ -163,6 +163,7 @@ body {
     position: relative;
     z-index: 2;
     color: #fff;
+    padding: 0 20px;
 }
 
 .banner-text h1 {
@@ -227,7 +228,7 @@ body {
     font-size: 16px;
 }
 
-/* 📌 实验室简介长文本优化排版样式 */
+/* 实验室简介卡片排版 */
 .intro-text-container {
     display: flex;
     flex-direction: column;
@@ -241,11 +242,6 @@ body {
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    transition: border-color 0.3s ease;
-}
-
-.intro-card:hover {
-    border-color: #38bdf8;
 }
 
 .intro-card h3 {
@@ -263,11 +259,6 @@ body {
     margin-bottom: 12px;
 }
 
-.intro-card p strong {
-    color: #ffffff;
-}
-
-/* 核心引言高亮样式 */
 .quote-text {
     background: rgba(56, 189, 248, 0.08);
     border-left: 4px solid #38bdf8;
@@ -278,40 +269,25 @@ body {
     margin-top: 15px;
 }
 
-/* 简介下方两列卡片分栏 */
 .intro-grid-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
 }
 
-/* 📌 实验室简介双照片网格布局样式（2列） */
-.photos-grid {
+.photos-grid, .research-grid, .videos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 40px; 
-    margin-top: 20px;
-}
-
-/* 📌 研究方向 3张图片网格布局样式（3列） */
-.research-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px; 
     margin-top: 20px;
 }
 
-.photo-card {
+.photo-card, .video-card {
     background-color: #111827; 
     border: 1px solid #1f2937;
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
-}
-
-.photo-card:hover {
-    border-color: #38bdf8; 
 }
 
 .photo-box {
@@ -328,57 +304,15 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;    
-    transition: transform 0.4s ease;
 }
 
-.photo-card:hover .photo-box img {
-    transform: scale(1.03); 
-}
-
-.photo-info h3 {
+.photo-info h3, .video-info h3 {
     color: #38bdf8;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 8px;
 }
 
-.photo-info p {
-    color: #94a3b8;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* 📌 成果作品双视频网格布局样式 */
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 40px; 
-    margin-top: 20px;
-}
-
-.video-card {
-    background-color: #111827; 
-    border: 1px solid #1f2937;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
-}
-
-.video-card:hover {
-    border-color: #38bdf8; 
-}
-
-.video-info {
-    margin-bottom: 20px;
-}
-
-.video-info h3 {
-    color: #38bdf8;
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.video-info p {
+.photo-info p, .video-info p {
     color: #94a3b8;
     font-size: 14px;
     line-height: 1.6;
@@ -393,83 +327,129 @@ body {
     background-color: #000;
 }
 
-/* =========================================
-   响应式适配：专门针对手机和平板（屏幕宽度 <= 768px）
-   ========================================= */
-@media screen and (max-width: 768px) {
+.contact-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
 
-    /* 1. 顶部导航栏：改为上下纵向排列，避免挤在一起 */
+.contact-info-card {
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-icon {
+    font-size: 28px;
+    background: rgba(56, 189, 248, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.contact-detail h3 {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.highlight-text {
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: #38bdf8 !important;
+}
+
+.contact-sub {
+    font-size: 11px;
+    color: #64748b;
+}
+
+
+/* ==========================================================
+   📌 手机端专属适配代码（当屏幕宽度小于等于 768px 时生效）
+   ========================================================== */
+@media screen and (max-width: 768px) {
+    /* 隐藏极窄的顶部日期栏，节省手机空间 */
+    .top-bar {
+        display: none;
+    }
+
+    /* 改变导航栏布局：手机上改为上下纵向堆叠 */
     .nav-container {
+        display: flex;
         flex-direction: column;
         height: auto;
         padding: 15px 10px;
-        gap: 10px;
+        gap: 12px;
     }
 
+    /* 左侧 5 个导航字恢复横排并居中 */
     .nav-left {
-        margin-left: 0;
-        gap: 15px;
+        display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        gap: 12px;
+        margin-left: 0;
+    }
+
+    .nav-left a {
         font-size: 14px;
     }
 
+    /* Logo 居中并缩小一点 */
+    .brand-logo {
+        grid-column: auto;
+    }
     .brand-logo img {
-        height: 60px; /* 手机上把 Logo 稍微缩小一点 */
+        height: 60px;
     }
 
+    /* 右上角艺术字移到中间并取消强制右移 */
     .right-art-titles {
         text-align: center;
-        margin-right: 0;
+        justify-self: center;
+        gap: 2px;
     }
 
-    .art-line-2 {
-        margin-left: 0; /* 手机上取消第二行的强制右移，防止超出屏幕 */
+    .art-line-1, .art-line-2 {
+        font-size: 16px;
+        margin-left: 0 !important; /* 手机上取消第二行的错位，防止超出一行 */
     }
 
-    /* 2. 顶部辅助栏（日期和搜索）隐藏或简化 */
-    .top-bar {
-        display: none; /* 手机屏幕太小，直接隐藏顶部日期栏释放空间 */
-    }
-
-    /* 3. 大图 Banner 区域：高度降低，文字改小 */
+    /* Banner 大图高度变矮，文字变小 */
     .hero-banner {
-        height: 350px;
+        height: 320px;
     }
 
     .banner-text h1 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .banner-text p {
-        font-size: 14px;
-        padding: 0 15px;
+        font-size: 13px;
     }
 
-    /* 4. 标语横幅区 */
-    .slogan-box {
-        padding: 20px 15px;
-    }
-
-    .slogan-box h2 {
-        font-size: 18px;
-    }
-
-    /* 5. 实验室简介、研究方向、成果作品的所有网格：全部变成单列（1列）上下排列 */
+    /* 所有网格卡片在手机上强制变成单列 */
     .intro-grid-2,
     .photos-grid,
     .research-grid,
-    .videos-grid {
-        grid-template-columns: 1fr !important; /* 强制单列 */
+    .videos-grid,
+    .contact-card-container {
+        grid-template-columns: 1fr !important;
         gap: 20px;
     }
 
     .content-section {
-        padding: 50px 5%; /* 手机上两边留出适量的边缘空白 */
-    }
-
-    /* 6. 联系方式卡片 */
-    .contact-card-container {
-        grid-template-columns: 1fr !important;
+        padding: 50px 5%;
     }
 }
